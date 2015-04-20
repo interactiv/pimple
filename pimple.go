@@ -7,10 +7,12 @@ type Pimple struct{
 }
 
 // New creates a new container
-func New(services map[string]func(*Pimple)interface{})(p *Pimple){
+func New(services... map[string]func(*Pimple)interface{})(p *Pimple){
   p= &Pimple{services:map[string]func()interface{}{}}
-  for key,factory:=range services{
-    p.Set(key,factory)
+  for i,serviceMap:=range services{
+    for key,factory:=range serviceMap{
+      p.Set(key,factory)
+    }
   }
   return
 }
@@ -21,8 +23,8 @@ func (p *Pimple) Value(key string,value interface{})*Pimple{
   }
   return p
 }
-// Set sets a factory for a service, mapped by a key
-// the factory is executed only once when the service is fethed
+// Set sets a factory for a service, mapped by a key.
+// The factory is executed only once
 // and the is cached
 func (p *Pimple) Set(key string,fn func(*Pimple)interface{})*Pimple{
   once :=new(sync.Once)
