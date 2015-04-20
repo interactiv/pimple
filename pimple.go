@@ -6,4 +6,5 @@ type Pimple struct{
 
 
 func New(services map[string]func(pimple Pimple)interface{})*Pimple{
+  return &Pimple{services:services}
 }
