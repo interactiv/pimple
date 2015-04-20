@@ -12,7 +12,7 @@ func TestPimple(t *testing.T){
     foo Foo
   }
   e:=expect.New(t)
-  p:=pimple.New(map[string]{func(*pimple.Pimple)interface{}{
+  p:=pimple.New(map[string]func(*pimple.Pimple)interface{}{
     "foo":func(p *pimple.Pimple){
       return &Foo{baz:1}
     },
