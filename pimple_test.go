@@ -23,5 +23,5 @@ func TestPimple(t *testing.T){
   bar:=p.Get("bar").(Bar)
   e.Expect(bar.foo.baz).ToEqual(1)
   p.Value("biz","a")
-  e.Expect(p.Get("biz").(string)).toEqual("a")
+  e.Expect(p.Get("biz").(string)).ToEqual("a")
 }
