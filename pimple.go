@@ -24,7 +24,7 @@ func (p *Pimple) Value(key string,value interface{})*Pimple{
 // Set sets a factory for a service, mapped by a key
 // the factory is executed only once when the service is fethed
 // and the is cached
-func (p *Pimple) Set(key string,fn func(*Pimple)interface{)}*Pimple{
+func (p *Pimple) Set(key string,fn func(*Pimple)interface{})*Pimple{
   once :=new(sync.Once)
   p.services[key]= func()interface{}{
     var result interface{}
