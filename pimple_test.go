@@ -13,10 +13,10 @@ func TestPimple(t *testing.T){
   }
   e:=expect.New(t)
   p:=pimple.New(map[string]func(*pimple.Pimple)interface{}{
-    "foo":func(p *pimple.Pimple){
+    "foo":func(p *pimple.Pimple)interface{}{
       return &Foo{baz:1}
     },
-    "bar":func(p *pimple.Pimple){
+    "bar":func(p *pimple.Pimple)interface{}{
       return &Bar{foo:p.Get("foo").(Foo)}
     },
   })
