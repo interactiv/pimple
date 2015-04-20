@@ -1,7 +1,7 @@
 package pimple_test
 
 import "testing"
-import "expect"
+import "github.Com/interactiv/expect"
 import "github.com/interactiv/pimple"
 
 func TestPimple(t *testing.T){
