@@ -18,10 +18,10 @@ func TestPimple(t *testing.T){
     },
     "bar":func(p *pimple.Pimple){
       return &Bar{foo:p.Get("foo").(Foo)}
-    }
+    },
   })
   bar:=p.Get("bar").(Bar)
   e.Expect(bar.foo.baz).ToEqual(1)
   p.Value("biz","a")
-  e.Expect(p.Get("biz).(string)).toEqual("a")
+  e.Expect(p.Get("biz").(string)).toEqual("a")
 }
