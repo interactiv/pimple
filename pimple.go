@@ -9,7 +9,7 @@ type Pimple struct{
 // New creates a new container
 func New(services... map[string]func(*Pimple)interface{})(p *Pimple){
   p= &Pimple{services:map[string]func()interface{}{}}
-  for i,serviceMap:=range services{
+  for _,serviceMap:=range services{
     for key,factory:=range serviceMap{
       p.Set(key,factory)
     }
