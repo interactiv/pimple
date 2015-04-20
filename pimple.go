@@ -34,7 +34,7 @@ func (p *Pimple) Set(key string,fn func(*Pimple)interface{})*Pimple{
     return result
   }
   return p
-)
+}
 //
 func (p *Pimple) Get(key)interface{}{
     return p.services(key)()
