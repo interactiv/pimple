@@ -5,10 +5,10 @@ import "github.com/interactiv/expect"
 import "github.com/interactiv/pimple"
 
 func TestPimple(t *testing.T){
-  type Foo{
+  type Foo struct{
     baz int
   }
-  type Bar{
+  type Bar struct{
     foo Foo
   }
   e:=expect.New(t)
