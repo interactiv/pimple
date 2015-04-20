@@ -36,6 +36,10 @@ func (p *Pimple) Set(key string,fn func(*Pimple)interface{})*Pimple{
   return p
 }
 //
-func (p *Pimple) Get(key string)interface{}{
-    return p.services(key)()
+func (p *Pimple) Get(key string)(result interface{}){
+    var result inteface{}
+    if p.services[key]!=nil{
+      result = p.services[key]
+    }
+    return
 }
