@@ -37,7 +37,6 @@ func (p *Pimple) Set(key string,fn func(*Pimple)interface{})*Pimple{
 }
 //
 func (p *Pimple) Get(key string)(result interface{}){
-    var result inteface{}
     if p.services[key]!=nil{
       result = p.services[key]
     }
