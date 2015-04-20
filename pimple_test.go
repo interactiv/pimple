@@ -11,7 +11,9 @@ func TestPimple(t *testing.T){
   type Bar struct{
     foo *Foo
   }
-  e:=expect.New(t)
+  type Buzz struct{
+    string string
+  }
   p:=pimple.New(map[string]func(*pimple.Pimple)interface{}{
     "foo":func(p *pimple.Pimple)interface{}{
       return &Foo{baz:1}
@@ -21,7 +23,11 @@ func TestPimple(t *testing.T){
     },
   })
   bar:=p.Get("bar").(*Bar)
-  e.Expect(bar.foo.baz).ToEqual(1)
   p.Value("biz","a")
-  e.Expect(p.Get("biz").(string)).ToEqual("a")
+  p.Set("buzz",func(p *pimple.Pimple)interface{}{
+    return &Buzz{string:p.Get("biz").(string)}
+  })
+  e:=expect.New(t)
+  e.Expect(bar.foo.baz).ToEqual(1)
+  e.Expect(p.Get("buzz").(*Buzz).string).ToEqual("a")
 }
